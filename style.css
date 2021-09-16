@@ -23,47 +23,32 @@
   display: grid;
   font-weight: 400;
   font-size: 20px;
-  grid-template-columns: minmax(min-content, 1fr) 3fr 3fr minmax(245px, 1fr);
+  grid-template-columns: minmax(min-content, 1fr) 3fr 3fr;
   grid-template-rows: 9em auto 9em;
   grid-template-areas:
-    'header header header header'
-    'navigation main main banner'
-    'footer footer footer footer';
+    'header header header'
+    'navigation main main'
+    'footer footer footer';
   font-family: Roboto, Arial, sans-serif;
 }
 
 .content {
   grid-area: main;
   background: #fffffb;
-  display: grid;
-  grid-template-columns: repeat(1, minmax(min-content, max-content));
-  gap: 1.7em;
   padding: 0 1em 6em 0;
 }
 
-.banners__list {
-  list-style-type: none;
+.content__row {
   display: grid;
-  grid-template-columns: repeat(2, fit-content(70%));
-  gap: 10px;
-  margin: 0;
+  gap: 1em;
 }
 
-.banners {
-  grid-area: banner;
+.content__row_content_auto-fill {
+  grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
 }
 
-.banners__image {
-  max-width: 100%;
-  width: 100%;
-  object-fit: cover;
-  display: block;
-  margin-bottom: 10px;
-}
-
-.banners__description {
-  font-size: 13px;
-  margin: 5px 0 10px;
+.content__row_content_auto-fit {
+  grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
 }
 
 .sidebar {
@@ -149,10 +134,17 @@
 
 .card__title {
   font-weight: 300;
-  font-size: 1.8em;
+  font-size: 0.8em;
 }
 
 .card__description {
   color: #949494;
   font-size: 0.9em;
+}
+
+@media screen and (max-width: 986px) {
+  .page {
+    font-size: 16px;
+    grid-template-rows: 6em auto 6em;
+  }
 }
